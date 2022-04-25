@@ -117,4 +117,3 @@ int main() {
 		cout << name << endl;
 	}
 }
-
