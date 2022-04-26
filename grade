@@ -12,25 +12,13 @@ i=0
 
 let "i=i+1"
 printf "\n\n### Check $i: our demo program should compile with your class\n"
-grade_command make -j8 -f Makefile demo1
+grade_command make -j8 -f Makefile demo
 printf "### Score $i: $grade\n"
 total=$((total + grade))
 
 let "i=i+1"
 printf "\n\n### Check $i: our demo program should run without errors\n"
-grade_command ./demo1
-printf "### Score $i: $grade\n"
-total=$((total + grade))
-
-let "i=i+1"
-printf "\n\n### Check $i: our demo program should compile with your class\n"
-grade_command make -j8 -f Makefile demo2
-printf "### Score $i: $grade\n"
-total=$((total + grade))
-
-let "i=i+1"
-printf "\n\n### Check $i: our demo program should run without errors\n"
-grade_command ./demo2
+grade_command ./demo
 printf "### Score $i: $grade\n"
 total=$((total + grade))
 

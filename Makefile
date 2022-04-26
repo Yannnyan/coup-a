@@ -1,6 +1,6 @@
 #!make -f
 
-CXX=clang++-9 
+CXX=clang++ 
 CXXVERSION=c++2a
 CXXFLAGS=-std=$(CXXVERSION) -Werror -Wsign-conversion
 TIDY_FLAGS=-extra-arg=-std=$(CXXVERSION) -checks=bugprone-*,clang-analyzer-*,cppcoreguidelines-*,performance-*,portability-*,readability-*,-cppcoreguidelines-pro-bounds-pointer-arithmetic,-cppcoreguidelines-owning-memory --warnings-as-errors=-*
@@ -13,7 +13,7 @@ OBJECTS=$(subst .cpp,.o,$(SOURCES))
 run: demo
 	./demo
 
-demo1: Demo.o $(OBJECTS)
+demo: Demo.o $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $^ -o demo
 
 
