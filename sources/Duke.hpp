@@ -1,3 +1,6 @@
+#ifndef DUKE_HPP_
+#define DUKE_HPP_
+
 #include "Player.hpp"
 #include "Game.hpp"
 #include <string>
@@ -19,5 +22,5 @@ namespace coup
     }; 
 }
 
-
+#endif
 

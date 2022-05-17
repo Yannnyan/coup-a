@@ -1,0 +1,5 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/yan/coup-b/coup-a'
+make: Nothing to be done for 'run'.
+make: Leaving directory '/home/yan/coup-b/coup-a'
+ 

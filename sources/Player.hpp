@@ -1,10 +1,14 @@
-#pragma once
+#ifndef PLAYER_HPP_
+#define PLAYER_HPP_
+
 #include "Game.hpp"
-#include "role.hpp"
 #include <string>
 
 namespace coup
 {
+    #define COUP_COINS 7
+    #define ASSASSIN_COUP_COINS 3
+    #define MAX_COINS_BEF_COUP 10
     // A player hold the coins and the role of the player
     // A player must coup if he holds 10 coins at least.
     // ways to get income: income, forein_aid, transfer, steal, tax, 
@@ -12,15 +16,12 @@ namespace coup
     {
         protected:
             int _coins;
-            role _player_role;
-            int _player_index;
             std::string _name;
+            std::string _role;
+            Game & _game;
         public:
             // constructors
-            Player(Game game, std::string name)
-            {
-                
-            }
+            Player(Game &game, std::string name);
             // getters setters
             std::string getName() const;
             // gain 1 coin with no limitations.
@@ -30,18 +31,33 @@ namespace coup
             void foreign_aid();
             // a player needs 7 coins to coup other player
             // player index must be valid and not sure if to use index
-            void coup(Player & player_index);
+            virtual void coup(Player & player_index);
             // prints the player's role
             std::string role() const;
             // prints the amount of money the player holds
             int coins() const;
-            // checks if this is equal to the argument player by the player's index
-            bool operator==(Player & player);
-
+            /**
+             * @brief check if in the current game this is this player's turn
+             * 
+             */
+            void check_myturn();
+            /**
+             * @brief Decreases the amount of coins this player has by c
+             * 
+             * @param c 
+             */
+            void decrease_coins(int c);
+            /**
+             * @brief increases the amount of coins this player has by c
+             * 
+             * @param c 
+             */
+            void increase_coins(int c);
+            void check_coins() const;
     };
 }
 
-
+#endif
 
 
 

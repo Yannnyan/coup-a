@@ -1,3 +1,6 @@
+#ifndef AMBASSADOR_HPP_
+#define AMBASSADOR_HPP_
+
 #include "Player.hpp"
 #include "Game.hpp"
 #include <string>
@@ -9,7 +12,7 @@ namespace coup
     {
         private:
         public:
-            Ambassador(Game game, std::string name) : Player(game, name){}
+            Ambassador(Game & game, std::string name);
             // transfers one coin from source to dest
             void transfer(Player &source, Player & dest);
             // function name is not current waiting to change it
@@ -19,5 +22,6 @@ namespace coup
 
 }
 
+#endif
 
 
