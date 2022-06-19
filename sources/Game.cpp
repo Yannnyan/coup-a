@@ -16,6 +16,7 @@ coup::Game::Game()
     this->_players = vector<Player *>();
     this->_operations = vector<tuple<Player *, Player *, int ,int>>();
     this->_player_turn = 0;
+    this->index_revived_player = 0;
     this->started = false;
 
 }
@@ -114,7 +115,7 @@ void coup::Game::remove_current_player_operation()
         {
             if(get<3>(*iter) == enums::blocked_operations::Assassin_coup)
             {
-
+                    
             }
             this->_operations.erase(iter);
             this->_operations.shrink_to_fit();
@@ -177,6 +178,8 @@ void coup::Game::vanish(Player * player)
     {
         if((*iter) == player)
         {
+            this->_revert_assassin = this->_players;
+            this->index_revived_player = index;
             if(index <= this->_player_turn)
             {
                 this->_player_turn -=1;
@@ -198,9 +201,13 @@ void coup::Game::revive(Player * player)
     {
         if((*iter) == player)
         {
-            this->_players.insert(this->_players.begin(), *iter);
+            // this->_players.insert(this->_players.begin(), *iter);
+            this->_players = this->_revert_assassin;
             // this->_players.push_back((*iter));
-            this->_player_turn +=1;
+            if(this->index_revived_player < this->_player_turn)
+            {
+                this->_player_turn +=1;
+            }
             this->_dead_players.erase(iter);
             this->_dead_players.shrink_to_fit();
             return;

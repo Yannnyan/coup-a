@@ -20,6 +20,7 @@ namespace coup
         private:
             // list of names of the playing characters
             std::vector<Player *> _players;
+            std::vector<Player *> _revert_assassin;
             std::vector<Player *> _dead_players;
             /**
              * @brief This vector holds tuples of the source player, dest player ,adn operation number and the int that associated to the operation
@@ -30,6 +31,7 @@ namespace coup
             std::vector<std::tuple<Player *, Player *, int, int>> _operations;
             // the name of the current player's turn
             int _player_turn;
+            int index_revived_player;
             bool started;
         public:
             // constructors

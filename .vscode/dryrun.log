@@ -1,5 +1,19 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/yan/coup-b/coup-a'
-make: Nothing to be done for 'run'.
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources --compile TestRunner.cpp -o TestRunner.o
+curl https://raw.githubusercontent.com/RazGavrieli/Board-Game-Coup/master/Test.cpp > StudentTest1.cpp
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources --compile StudentTest1.cpp -o StudentTest1.o
+curl https://raw.githubusercontent.com/Esther-Bi/B-HW4-Test/main/Test.cpp > StudentTest2.cpp
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources --compile StudentTest2.cpp -o StudentTest2.o
+curl https://raw.githubusercontent.com/BenjaminSaldman/coup-a/main/Test.cpp > StudentTest3.cpp
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources --compile StudentTest3.cpp -o StudentTest3.o
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources --compile sources/Ambassador.cpp -o objects/Ambassador.o
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources --compile sources/Game.cpp -o objects/Game.o
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources --compile sources/Assassin.cpp -o objects/Assassin.o
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources --compile sources/Player.cpp -o objects/Player.o
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources --compile sources/Contessa.cpp -o objects/Contessa.o
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources --compile sources/Duke.cpp -o objects/Duke.o
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources --compile sources/Captain.cpp -o objects/Captain.o
+clang++-9 -std=c++2a -Werror -Wsign-conversion -Isources TestRunner.o StudentTest1.o StudentTest2.o StudentTest3.o objects/Ambassador.o objects/Game.o objects/Assassin.o objects/Player.o objects/Contessa.o objects/Duke.o objects/Captain.o -o test
 make: Leaving directory '/home/yan/coup-b/coup-a'
  
